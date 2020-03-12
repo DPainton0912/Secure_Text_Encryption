@@ -12,7 +12,7 @@ This project is a console application that can read a text file that is specifie
 - Input if encrypting or decrypting and what method you wish to use.
 - Input a shift, which will be a number if using Caesar cipher or a key, which will be either a word or random collection of characters if using Polyalphabetic cipher.
 - The application will then encrypt/decrypt the text from the file.
-- Input a filename for the encrypted/decrypted text, if you don't want to overwrite the original file use a different file name.
+- Input a filename for the encrypted/decrypted text, if you don't want to overwrite the original file use a completely different file name as the application not case sensitive.
 - Refer to the new file to see encrypted/decrypted text.
 # Project by:
 Devon Painton
