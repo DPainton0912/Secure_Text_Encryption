@@ -2,13 +2,13 @@ import collections
 from pathlib import Path
 class Security(object):
 
-    def __init__(self, plaintext):
-        #super().__init__()
+    def __init__(self):
         pass
 
     def CaesarEncryptor(self, plaintext):
-        shift = int(input("Please enter a number to shift text by: "))
         ciphertext = ""
+        shift = input("Please enter a number to shift text by: ")
+        shift = int(shift)
         ucalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         lcalphabet = "abcdefghijklmnopqrstuvwxyz"
         numbers = "0123456789"
@@ -42,19 +42,12 @@ class Security(object):
             if symbols[i] in plaintext and len(symbols)<=16:
                 ciphertext = ciphertext + ciphersymbols[i]
             i+1
-        filename = input("Please enter a file name: ").strip()
-        if not ".txt" in filename:
-            filename += ".txt"
-        path = Path(filename)
-        if path.exists():
-            path.write_text(ciphertext)
-        else:
-            open(filename, "x")
-            path.write_text(ciphertext)
+        return(ciphertext)
 
     def CaesarDecryptor(self, plaintext):
-        shift = int(input("Please enter a number to shift text by: "))
         ciphertext = ""
+        shift = input("Please enter a number to shift text by: ")
+        shift = int(shift)
         ucalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         lcalphabet = "abcdefghijklmnopqrstuvwxyz"
         numbers = "0123456789"
@@ -81,30 +74,24 @@ class Security(object):
             if ucalphabet[i] in plaintext:
                 ciphertext = ciphertext + cipherucalphabet[i]
             i+1
+        i=0
         for i in range(len(lcalphabet)):
             if lcalphabet[i] in plaintext:
                 ciphertext = ciphertext + cipherlcalphabet[i]
             i+1
+        i=0
         for i in range(len(numbers)):
             if numbers[i] in plaintext:
                 ciphertext = ciphertext + ciphernumbers[i]
             i+1
+        i=0
         for i in range(len(symbols)):
             if symbols[i] in plaintext and len(symbols)<=16:
                 ciphertext = ciphertext + ciphersymbols[i]
             i+1
-        filename = input("Please enter a file name: ").strip()
-        if not ".txt" in filename:
-            filename += ".txt"
-        path = Path(filename)
-        if path.exists():
-            path.write_text(ciphertext)
-        else:
-            open(filename, "x")
-            path.write_text(ciphertext)
+        return(ciphertext)
 
     def PolySubEncryptor(self, plaintext):
         pass
-
     def PolySubDecryptor(self, plaintext):
         pass
