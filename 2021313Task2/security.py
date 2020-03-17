@@ -93,4 +93,17 @@ class Security(object):
     def PolySubEncryptor(self, plaintext):
         pass
     def PolySubDecryptor(self, plaintext):
-        pass
+        plaintext = ""
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\n ~`!@#$%^&*()_-+=<>,.?/\|[]{};:"
+        letter_to_index = dict(zip(alphabet, range(len(alphabet))))
+        index_to_letter = dict(zip(range(len(alphabet)), alphabet))
+        if type(self.key) == int:
+            self.key = str(self.key)
+        split_ciphertext = [ciphertext[i:i + len(self.key)] for i in range(0, len(ciphertext), len(self.key))]
+        for each_split in split_ciphertext:
+            i = 0
+            for letter in each_split:
+                number = (letter_to_index[letter] - letter_to_index[self.key[i]]) % len(alphabet)
+                plaintext += index_to_letter[number]
+                i += 1
+        return(plaintext)
